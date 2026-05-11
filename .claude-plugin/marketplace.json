@@ -1,0 +1,19 @@
+{
+  "name": "commitmind",
+  "owner": {
+    "name": "CommitMind",
+    "email": "devops@commitmind.dev"
+  },
+  "description": "Deterministic memory, code-intel, and task workflows for development teams.",
+  "plugins": [
+    {
+      "name": "commitmind",
+      "source": ".",
+      "description": "Deterministic memory, code-intel, and task workflows via skills + hooks.",
+      "homepage": "https://commitmind.dev",
+      "repository": "https://github.com/commitmind/claude-plugin",
+      "license": "MIT",
+      "keywords": ["memory", "code-intelligence", "tasks", "mcp", "git-history"]
+    }
+  ]
+}
