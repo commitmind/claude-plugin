@@ -1,0 +1,9 @@
+{
+  "name": "commitmind",
+  "description": "CommitMind for Claude Code — deterministic memory, code-intel, and task workflows via skills + hooks. Requires the commitmind CLI installed and authenticated.",
+  "version": "0.0.1",
+  "author": "CommitMind",
+  "homepage": "https://commitmind.dev",
+  "repository": "https://github.com/salkantai/commitmind",
+  "license": "MIT"
+}
