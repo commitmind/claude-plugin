@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/auto-prime.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/auto-prime.sh",
             "timeout": 15,
             "statusMessage": "Auto-priming CommitMind context..."
           }
@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/auto-post-compact.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/auto-post-compact.sh",
             "timeout": 10,
             "statusMessage": "Re-grounding CommitMind context after compaction..."
           }
@@ -28,22 +28,22 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/history-shaped-prompt.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/history-shaped-prompt.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/prompt-memory-fan-out.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/prompt-memory-fan-out.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/anchor-user-work.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/anchor-user-work.sh",
             "timeout": 3
           },
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/harvest-finding.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/harvest-finding.sh",
             "timeout": 3
           }
         ]
@@ -55,7 +55,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/rules-prefetch.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/rules-prefetch.sh",
             "timeout": 8
           }
         ]
@@ -65,7 +65,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/routing-enforce.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/routing-enforce.sh",
             "timeout": 5
           }
         ]
@@ -75,22 +75,22 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/explain-prefetch.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/explain-prefetch.sh",
             "timeout": 8
           },
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/anchor-user-work.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/anchor-user-work.sh",
             "timeout": 3
           },
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/anchor-edit.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/anchor-edit.sh",
             "timeout": 3
           },
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/surface-playbook.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/surface-playbook.sh",
             "timeout": 3
           }
         ]
@@ -100,7 +100,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/subagent-preload.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/subagent-preload.sh",
             "timeout": 3
           }
         ]
@@ -110,7 +110,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/playbooks-for-task.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/playbooks-for-task.sh",
             "timeout": 5
           }
         ]
@@ -122,17 +122,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/task-phase-reminder.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/task-phase-reminder.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/count-edit.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/count-edit.sh",
             "timeout": 2
           },
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/check-edit.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/check-edit.sh",
             "timeout": 6
           }
         ]
@@ -142,7 +142,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/routing-enforce.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/routing-enforce.sh",
             "timeout": 3
           }
         ]
@@ -152,7 +152,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/anchor-user-work.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/anchor-user-work.sh",
             "timeout": 3
           }
         ]
@@ -162,7 +162,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/playbooks-for-task.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/playbooks-for-task.sh",
             "timeout": 5
           }
         ]
@@ -173,7 +173,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_DIR}/scripts/stuck-design.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/stuck-design.sh",
             "timeout": 3
           }
         ]
