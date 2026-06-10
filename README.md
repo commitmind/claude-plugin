@@ -21,10 +21,15 @@ Hooks fire **only on local Claude Code CLI**. Cloud Claude (claude.ai/code) and 
 
 ## Install
 
-`/plugin install commitmind@<marketplace>` once the marketplace listing lands. Until then, install from local path during development:
+```
+/plugin marketplace add commitmind/claude-plugin
+/plugin install commitmind@commitmind
+```
+
+For local development from the monorepo, install straight from the plugin path instead:
 
 ```
-/plugin install .
+/plugin install ./apps/plugin-claude
 ```
 
 ## License

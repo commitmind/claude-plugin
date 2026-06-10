@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "commitmind",
-      "source": "./",
+      "source": ".",
       "description": "Deterministic memory, code-intel, and task workflows via skills + hooks.",
       "homepage": "https://commitmind.dev",
       "repository": "https://github.com/commitmind/claude-plugin",
