@@ -3,8 +3,8 @@
 #
 # CommitMind PreToolUse / PostToolUse hook: catch the agent at the
 # planning moment by surfacing ranked playbooks against the task being
-# created (PreToolUse on mcp__commitmind__task_create) or pinned
-# (PostToolUse on mcp__commitmind__task_set_active). Logic lives in
+# created (PreToolUse on mcp__mind__task_create) or pinned
+# (PostToolUse on mcp__mind__task_set_active). Logic lives in
 # `commitmind hook playbooks-for-task` (Go subcommand). Per-(session,
 # title) dedup inside the script means each task gets the nudge at most
 # once per agent session.

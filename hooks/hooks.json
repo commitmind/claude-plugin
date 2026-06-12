@@ -106,7 +106,7 @@
         ]
       },
       {
-        "matcher": "mcp__commitmind__task_create",
+        "matcher": "mcp__mind__task_create",
         "hooks": [
           {
             "type": "command",
@@ -138,7 +138,7 @@
         ]
       },
       {
-        "matcher": "mcp__commitmind-code__xref",
+        "matcher": "mcp__mind-code__xref",
         "hooks": [
           {
             "type": "command",
@@ -148,7 +148,7 @@
         ]
       },
       {
-        "matcher": "mcp__commitmind__task_todo_add",
+        "matcher": "mcp__mind__task_todo_add",
         "hooks": [
           {
             "type": "command",
@@ -158,7 +158,7 @@
         ]
       },
       {
-        "matcher": "mcp__commitmind__task_set_active",
+        "matcher": "mcp__mind__task_set_active",
         "hooks": [
           {
             "type": "command",

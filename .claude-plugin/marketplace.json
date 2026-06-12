@@ -1,5 +1,5 @@
 {
-  "name": "commitmind",
+  "name": "mind",
   "owner": {
     "name": "CommitMind",
     "email": "devops@commitmind.dev"
@@ -7,7 +7,7 @@
   "description": "Deterministic memory, code-intel, and task workflows for development teams.",
   "plugins": [
     {
-      "name": "commitmind",
+      "name": "mind",
       "source": ".",
       "description": "Deterministic memory, code-intel, and task workflows via skills + hooks.",
       "homepage": "https://commitmind.dev",

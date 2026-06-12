@@ -23,7 +23,7 @@ set -e
 # or .cursor/mcp.json (Cursor project config).
 has_cm=0
 for f in .mcp.json .cursor/mcp.json; do
-    if [[ -f "$f" ]] && grep -q '"commitmind"' "$f" 2>/dev/null; then
+    if [[ -f "$f" ]] && grep -qE '"(commitmind|mind)"' "$f" 2>/dev/null; then
         has_cm=1
         break
     fi

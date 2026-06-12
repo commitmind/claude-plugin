@@ -11,7 +11,7 @@ The plugin itself is a free convenience layer. The subscription gate fires serve
 
 ## What's bundled
 
-- **MCP servers** — `commitmind` (memory + tasks) and `commitmind-code` (xref + code-intel), wired via `.mcp.json` to the locally-installed CLI binary.
+- **MCP servers** — `mind` (memory + tasks) and `mind-code` (xref + code-intel), wired via `.mcp.json` to the locally-installed CLI binary.
 - **Skills** — advisory routing for memory, code, and playbook flows. Lazy-loaded by description match.
 - **Hooks** — deterministic gates that fire before tool execution: anchor-distinct-concerns on Edit/Write, commit-before-advance on `task_advance`, memory-routing redirects for `git log` / `grep`-on-identifier patterns, lean SessionStart prime.
 
@@ -23,7 +23,7 @@ Hooks fire **only on local Claude Code CLI**. Cloud Claude (claude.ai/code) and 
 
 ```
 /plugin marketplace add commitmind/claude-plugin
-/plugin install commitmind@commitmind
+/plugin install mind@mind
 ```
 
 For local development from the monorepo, install straight from the plugin path instead:
