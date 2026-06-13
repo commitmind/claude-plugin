@@ -17,18 +17,17 @@
 
 set -e
 
-# --- Gate 1: only fire in CommitMind-linked projects. ---
-# Same detector as commitmind-task-phase-reminder.sh: presence of a
-# `commitmind` entry in either .mcp.json (Claude Code project config)
-# or .cursor/mcp.json (Cursor project config).
-has_cm=0
-for f in .mcp.json .cursor/mcp.json; do
-    if [[ -f "$f" ]] && grep -qE '"(commitmind|mind)"' "$f" 2>/dev/null; then
-        has_cm=1
-        break
-    fi
-done
-if (( ! has_cm )); then
+# --- Gate 1: cheap skip for non-repo dirs ($HOME, etc.). ---
+# We DON'T gate on a project .mcp.json anymore. The Claude Code plugin
+# registers the MCP servers from its OWN bundled config and writes no
+# project-level .mcp.json, so connected repos under the plugin model
+# frequently have none — the old grep silently skipped them and the
+# announce never fired ("Claude isn't aware of CommitMind"). The
+# authoritative signal is whether the repo has an agent token, which
+# `commitmind prime` checks internally and exits silently (0) when
+# absent. So here we only do a cheap git-repo guard to avoid spawning
+# the binary in non-git dirs, and let `prime` self-gate on the token.
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     exit 0
 fi
 

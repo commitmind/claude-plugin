@@ -4,8 +4,10 @@
 # task should be in `implementation`, not `discovery`, before edits begin.
 #
 # Gating is intentionally conservative:
-#   1. Only fires when cwd is a CommitMind-linked project (detected by a
-#      `commitmind` entry in `.mcp.json` or `.cursor/mcp.json`).
+#   1. Only fires when cwd is a CommitMind-enabled repo, detected by
+#      `commitmind hook in-project` (shared Go gate: project MCP config
+#      OR an agent token — the latter is the only signal present under
+#      the Claude Code plugin, which writes no project .mcp.json).
 #   2. Debounced per-repo to once every 5 minutes via $TMPDIR state.
 #
 # This is a soft nudge, not state-aware — the script does NOT query the
@@ -15,15 +17,14 @@
 
 set -e
 
-# --- Gate 1: are we in a CommitMind-linked project? ---
-has_cm=0
-for f in .mcp.json .cursor/mcp.json; do
-    if [[ -f "$f" ]] && grep -qE '"(commitmind|mind)"' "$f" 2>/dev/null; then
-        has_cm=1
-        break
-    fi
-done
-if (( ! has_cm )); then
+# --- Gate 1: are we in a CommitMind-enabled repo? ---
+# Silent-skip when commitmind isn't on PATH (matches the other hooks'
+# fail-open contract) or when the shared Go gate says this isn't a
+# CommitMind repo.
+if ! command -v commitmind >/dev/null 2>&1; then
+    exit 0
+fi
+if ! commitmind hook in-project >/dev/null 2>&1; then
     exit 0
 fi
 

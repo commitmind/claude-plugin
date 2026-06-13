@@ -15,15 +15,11 @@
 
 set -e
 
-# --- Gate 1: only fire in CommitMind-linked projects. ---
-has_cm=0
-for f in .mcp.json .cursor/mcp.json; do
-    if [[ -f "$f" ]] && grep -qE '"(commitmind|mind)"' "$f" 2>/dev/null; then
-        has_cm=1
-        break
-    fi
-done
-if (( ! has_cm )); then
+# --- Gate 1: cheap skip for non-repo dirs. ---
+# No project-.mcp.json gate (the plugin writes none); `commitmind prime`
+# self-gates on the agent token and exits silently when absent. See
+# auto-prime.sh for the full rationale.
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     exit 0
 fi
 
