@@ -114,6 +114,16 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "mcp__mind__task_complete|mcp__mind__task_advance|mcp__plugin_mind_mind__task_complete|mcp__plugin_mind_mind__task_advance",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/done-gate.sh",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -175,6 +185,11 @@
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/stuck-design.sh",
             "timeout": 3
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/session-reground.sh",
+            "timeout": 5
           }
         ]
       }
