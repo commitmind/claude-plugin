@@ -16,6 +16,7 @@ There is one code-navigation tool — `xref` — and the operation is encoded in
 | What's in this file? | `xref(query="path/to/file.go")` |
 | Show me the body of X | `xref(query="path/file.go::X")` (kind defaults to function; pass `kind=type\|class\|const` to override) |
 | Code content / cross-cutting pattern | `xref(query="phrase", mode="fts")` or `mode="substring"` for hyphenated / regex-source / partial-literal fragments |
+| Find a CODE SHAPE / call pattern (every `eval`, every `os.Getenv`) | `xref(query="eval($X)", mode="structural")` — AST match (`$X` = metavar, `$$$` = ellipsis); binds matches, formatting-resilient, skips comment/string false positives |
 | Memory layer (prior decisions, rationale) | `search_memory` |
 | String literal in non-code (config, markdown, SQL, deps) | grep / ripgrep / Read |
 | Untracked paths (not in `git ls-files`) / non-code / cold cache | grep / ripgrep / Read |
