@@ -1,11 +1,15 @@
 ---
 name: CommitMind AI review routing
-description: When the user wants their pending changes reviewed, sanity-checked before a commit or PR, or asks "is this ready to ship / did I break anything / find issues in what I changed" — AND when they want a finding fixed or turned into a rule. Routes to review_changes / review_ai / propose_fix / draft_rule instead of eyeballing the diff.
+description: When the user wants their pending changes reviewed or sanity-checked before a commit or PR — INCLUDING a bare "review the code" / "run a code review" / "do a code review" / "review this" — or asks "is this ready to ship / did I break anything / find issues in what I changed" — AND when they want a finding fixed or turned into a rule. Routes to review_changes / review_ai / propose_fix / draft_rule instead of eyeballing the diff or reaching for the generic built-in code-review skill. (The user typing the explicit /code-review slash command still invokes Claude Code's built-in generic review — only that explicit slash bypasses this routing.)
 ---
 
 # Review-routing — use the review tools, don't eyeball the diff
 
 There are four review tools. Reach for them before reading the diff yourself — they are grounded (structural diff + project rules + linters + cross-file caller impact) and the AI ones run on the metered mind tier, not your own context.
+
+## "code review" means THIS, not the built-in skill
+
+A bare natural-language "code review" / "review the code" / "run a code review" / "review this" routes HERE — `review_changes` (or `review_ai` for a pre-PR judgment pass). Do NOT reach for Claude Code's generic built-in `code-review` skill for those phrasings: it's a diff-only bug/cleanup pass with none of the project grounding (rules, decisions, caller impact, the metered judgment layer) these tools carry. The ONLY time the built-in generic review is intended is when the user types the explicit `/code-review` slash command themselves — that explicit invocation is their deliberate opt-out and bypasses this routing.
 
 ## Routing
 
