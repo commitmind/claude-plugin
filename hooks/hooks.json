@@ -71,6 +71,16 @@
         ]
       },
       {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/commit-nudge.sh",
+            "timeout": 3
+          }
+        ]
+      },
+      {
         "matcher": "Read",
         "hooks": [
           {
