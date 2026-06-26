@@ -154,6 +154,15 @@
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/commit-review-nudge.sh",
             "timeout": 3
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/security-review-async.sh",
+            "if": "Bash(git commit:*)",
+            "asyncRewake": true,
+            "rewakeMessage": "Background security review of the commit (context-enriched generate→refute) found issues — address or acknowledge them, then continue with the user's original request or keep waiting for their reply. These are advisory, not gating:",
+            "rewakeSummary": "Commit security review found issues",
+            "timeout": 120
           }
         ]
       },
