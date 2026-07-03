@@ -57,5 +57,15 @@ fi
 #     so this isn't guaranteed to render, but when it works the user
 #     gets the visible "CommitMind Ready" line above their prompt,
 #     and when it doesn't we lose nothing — the additional context
-#     still loads. ---
-timeout 12 "$binary" prime --hook-envelope 2>/dev/null || true
+#     still loads.
+#
+#     --skip-on-compact: this unmatched SessionStart hook fires on EVERY
+#     source including `compact`, but a separate compact-matched hook
+#     (auto-post-compact.sh) already emits a focused reprime there. On a
+#     compaction, running the full prime too just buries that reprime's
+#     FIRST-ACTION tool-preload in a wall of sections competing with Claude's
+#     "resume directly" handoff. `prime` reads the SessionStart envelope on
+#     stdin (which this hook receives) and emits nothing when source=compact,
+#     deferring to auto-post-compact.sh. Fail-open on non-compact / no stdin.
+#     Spec 4c6b0351. ---
+timeout 12 "$binary" prime --hook-envelope --skip-on-compact 2>/dev/null || true
