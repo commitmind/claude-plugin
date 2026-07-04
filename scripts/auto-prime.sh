@@ -59,13 +59,15 @@ fi
 #     and when it doesn't we lose nothing — the additional context
 #     still loads.
 #
-#     --skip-on-compact: this unmatched SessionStart hook fires on EVERY
-#     source including `compact`, but a separate compact-matched hook
-#     (auto-post-compact.sh) already emits a focused reprime there. On a
-#     compaction, running the full prime too just buries that reprime's
-#     FIRST-ACTION tool-preload in a wall of sections competing with Claude's
-#     "resume directly" handoff. `prime` reads the SessionStart envelope on
-#     stdin (which this hook receives) and emits nothing when source=compact,
-#     deferring to auto-post-compact.sh. Fail-open on non-compact / no stdin.
-#     Spec 4c6b0351. ---
-timeout 12 "$binary" prime --hook-envelope --skip-on-compact 2>/dev/null || true
+#     On compaction this unmatched hook fires alongside the compact-matched
+#     auto-post-compact.sh reprime, so BOTH the full prime and the reprime load.
+#     That's intentional: the full prime carries the load-bearing behavioral
+#     contract (spec-driven-mode gate, the recent-tasks menu + set_active nudge,
+#     the `mind commit` line) that the lean reprime deliberately omits — dropping
+#     the full prime on compaction (the --skip-on-compact experiment, spec
+#     4c6b0351) made long/compacted sessions lose that contract and drift off
+#     CommitMind. The reprime's FIRST-ACTION preload has explicit override-"resume
+#     directly" language (Slice A of 4c6b0351), so it stays salient even with the
+#     full prime present — which is exactly the config the codex plugin runs and
+#     has never regressed. Regression fix: task d4b8fc3. ---
+timeout 12 "$binary" prime --hook-envelope 2>/dev/null || true
