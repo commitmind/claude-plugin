@@ -59,15 +59,25 @@ fi
 #     and when it doesn't we lose nothing — the additional context
 #     still loads.
 #
-#     On compaction this unmatched hook fires alongside the compact-matched
-#     auto-post-compact.sh reprime, so BOTH the full prime and the reprime load.
-#     That's intentional: the full prime carries the load-bearing behavioral
-#     contract (spec-driven-mode gate, the recent-tasks menu + set_active nudge,
-#     the `mind commit` line) that the lean reprime deliberately omits — dropping
-#     the full prime on compaction (the --skip-on-compact experiment, spec
-#     4c6b0351) made long/compacted sessions lose that contract and drift off
-#     CommitMind. The reprime's FIRST-ACTION preload has explicit override-"resume
-#     directly" language (Slice A of 4c6b0351), so it stays salient even with the
-#     full prime present — which is exactly the config the codex plugin runs and
-#     has never regressed. Regression fix: task d4b8fc3. ---
-timeout 12 "$binary" prime --hook-envelope 2>/dev/null || true
+#     --skip-on-compact makes the full prime read the SessionStart hook
+#     envelope from stdin (Claude Code pipes it there, and the binary inherits
+#     this script's stdin) and emit NOTHING when source==compact. On compaction
+#     the compact-matched auto-post-compact.sh reprime OWNS the payload; running
+#     the full prime too would bury the reprime's FIRST-ACTION tool-preload
+#     directive under the full prime's wall of sections, letting Claude Code's
+#     "resume directly — do not acknowledge the summary" handoff win so the agent
+#     skips the ToolSearch preload and the MCP schemas never reload — the exact
+#     "forgets CommitMind after several compactions" drift (spec 4c6b0351 Slice B;
+#     capability doc claude-code-plugin-sessionstart-hooks). The lean reprime
+#     already carries the FIRST-ACTION preload + most-recent-task block + the
+#     contract reminder, so nothing load-bearing is lost by skipping here.
+#
+#     Codex/OpenCode DON'T pass --skip-on-compact: they don't defer MCP tool
+#     schemas (no preload to bury), so their full-prime-on-compact is harmless.
+#     That host difference is why the earlier "parity with codex" reasoning
+#     (which dropped this flag) was wrong for Claude specifically.
+#
+#     Fail-open: a non-compact source, missing envelope, or parse error falls
+#     through to the normal full prime, so a real session start is never
+#     suppressed. ---
+timeout 12 "$binary" prime --hook-envelope --skip-on-compact 2>/dev/null || true
