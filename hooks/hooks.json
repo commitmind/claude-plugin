@@ -66,6 +66,16 @@
         ]
       },
       {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/duplicate-guard.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
         "matcher": "Bash|Read|Grep",
         "hooks": [
           {
