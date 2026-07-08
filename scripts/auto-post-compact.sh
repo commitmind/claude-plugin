@@ -34,4 +34,7 @@ fi
 
 # --- Run with a tight timeout. The CLI itself has a 10s deadline; we
 #     wrap at 8s here since the post-compact payload is small. ---
-timeout 8 "$binary" prime --post-compact 2>/dev/null || true
+# --mcp-namespace plugin: this hook only ever runs under the plugin install,
+# so the ToolSearch preload emits only mcp__plugin_mind_mind__* names — half
+# the wall of the both-namespaces default (task feac200).
+timeout 8 "$binary" prime --post-compact --mcp-namespace plugin 2>/dev/null || true

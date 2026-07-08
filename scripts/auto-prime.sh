@@ -80,4 +80,7 @@ fi
 #     Fail-open: a non-compact source, missing envelope, or parse error falls
 #     through to the normal full prime, so a real session start is never
 #     suppressed. ---
-timeout 12 "$binary" prime --hook-envelope --skip-on-compact 2>/dev/null || true
+# --mcp-namespace plugin: this hook only ever runs under the plugin install, so
+# the full-prime ToolSearch preload emits only mcp__plugin_mind_mind__* names —
+# half the both-namespaces default (task feac200).
+timeout 12 "$binary" prime --hook-envelope --skip-on-compact --mcp-namespace plugin 2>/dev/null || true
