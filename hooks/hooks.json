@@ -127,6 +127,11 @@
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/surface-playbook.sh",
             "timeout": 3
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/memory-guard.sh",
+            "timeout": 3
           }
         ]
       },
