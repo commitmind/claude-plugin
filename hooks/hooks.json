@@ -102,6 +102,11 @@
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/explain-prefetch.sh",
             "timeout": 8
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/read-cluster-capdoc.sh",
+            "timeout": 5
           }
         ]
       },
