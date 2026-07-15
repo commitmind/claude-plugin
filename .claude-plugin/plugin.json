@@ -1,7 +1,7 @@
 {
   "name": "mind",
   "description": "CommitMind for Claude Code \u2014 deterministic memory, code-intel, and task workflows via skills + hooks. Requires the commitmind CLI installed and authenticated.",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "author": {
     "name": "CommitMind",
     "email": "devops@commitmind.dev",
