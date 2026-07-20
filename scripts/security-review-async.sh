@@ -39,4 +39,13 @@ printf '%s\n' "$diff" | grep -E '^\+' | grep -qiE "$sinks" || exit 0
 
 # Run the security pass on the just-committed change. Stdout becomes the
 # asyncRewake notification body. --format=text keeps it human/agent-readable.
-commitmind review --ai-security --scope=head --format=text 2>/dev/null || exit 0
+out="$(commitmind review --ai-security --scope=head --format=text 2>/dev/null)" || exit 0
+# Nothing surfaced → no rewake (don't wake the agent on a clean commit).
+[ -n "$out" ] || exit 0
+printf '%s\n' "$out"
+
+# Adoption nudge: turn an FP judgment into RECORDED, measurable signal instead of
+# a silent move-on. Without this, dismissed findings vanish and the AI-review
+# precision loop stays blind (the gap dismiss_ai_finding closes). Phrased
+# conditionally so it's harmless when every finding above is a true positive.
+printf '\n---\nIf any finding above is a FALSE POSITIVE for this codebase, record it with the `dismiss_ai_finding` MCP tool (file, line, category=security, and a reason that states the fact refuting it). That feeds the AI-review precision signal and quiets the shape on future runs — do NOT silently ignore it. Address the real findings.\n'
