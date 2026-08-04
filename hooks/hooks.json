@@ -135,6 +135,16 @@
         ]
       },
       {
+        "matcher": "Grep|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/read-cluster-capdoc.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
         "matcher": "Edit|Write|MultiEdit",
         "hooks": [
           {
@@ -205,6 +215,36 @@
           {
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/done-gate.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__mind__search_memory|mcp__plugin_mind_mind__search_memory|mcp__mind-code__search_memory|mcp__plugin_mind_mind-code__search_memory|mcp__mind__explain_capability|mcp__plugin_mind_mind__explain_capability|mcp__mind__recall_learning|mcp__plugin_mind_mind__recall_learning|mcp__mind__explain|mcp__plugin_mind_mind__explain",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/memory-consulted.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__mind-code__xref|mcp__plugin_mind_mind-code__xref",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/xref-consulted.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__mind__create_spec|mcp__plugin_mind_mind__create_spec",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/spec-grounding-check.sh",
             "timeout": 5
           }
         ]
