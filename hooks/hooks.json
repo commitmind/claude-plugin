@@ -399,11 +399,6 @@
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/claim-check.sh",
             "timeout": 5
-          },
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/done-claim-check.sh",
-            "timeout": 5
           }
         ]
       }
