@@ -75,6 +75,16 @@
     ],
     "PreToolUse": [
       {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/rule-gate.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
         "matcher": "Read|Edit|Write|MultiEdit",
         "hooks": [
           {
