@@ -145,7 +145,7 @@
         ]
       },
       {
-        "matcher": "Grep|Agent",
+        "matcher": "Grep|Agent|Bash",
         "hooks": [
           {
             "type": "command",
