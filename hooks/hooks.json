@@ -225,7 +225,7 @@
         ]
       },
       {
-        "matcher": "mcp__mind__task_create",
+        "matcher": "mcp__mind__task_create|mcp__plugin_mind_mind__task_create",
         "hooks": [
           {
             "type": "command",
@@ -326,7 +326,7 @@
         ]
       },
       {
-        "matcher": "mcp__mind-code__xref",
+        "matcher": "mcp__mind-code__xref|mcp__plugin_mind_mind-code__xref",
         "hooks": [
           {
             "type": "command",
@@ -336,7 +336,7 @@
         ]
       },
       {
-        "matcher": "mcp__mind__task_todo_add",
+        "matcher": "mcp__mind__task_todo_add|mcp__plugin_mind_mind__task_todo_add",
         "hooks": [
           {
             "type": "command",
@@ -346,7 +346,7 @@
         ]
       },
       {
-        "matcher": "mcp__mind__task_set_active",
+        "matcher": "mcp__mind__task_set_active|mcp__plugin_mind_mind__task_set_active",
         "hooks": [
           {
             "type": "command",
@@ -356,7 +356,7 @@
         ]
       },
       {
-        "matcher": "mcp__mind__log_observation",
+        "matcher": "mcp__mind__log_observation|mcp__plugin_mind_mind__log_observation",
         "hooks": [
           {
             "type": "command",

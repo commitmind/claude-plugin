@@ -22,4 +22,10 @@ if [ -n "${COMMITMIND_REVIEW_AGENT:-}" ]; then exit 0; fi
 if ! command -v commitmind >/dev/null 2>&1; then
     exit 0
 fi
-exec commitmind hook routing-enforce
+# --mcp-namespace plugin: this launcher only ever runs under the marketplace
+# plugin install, where the code surface registers as
+# mcp__plugin_mind_mind-code__xref. Without the flag the coaching messages name
+# the bare mcp__mind-code__xref, which does not resolve here — the agent calls
+# it, gets an InputValidationError, and falls back to the grep the message was
+# trying to prevent. Same declare-don't-detect contract as auto-prime.sh.
+exec commitmind hook routing-enforce --mcp-namespace plugin
